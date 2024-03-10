@@ -1,13 +1,17 @@
 package at.ac.fhcampuswien.fhmdb.ui;
 
+import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+
+import java.util.List;
 
 public class MovieCell extends ListCell<Movie> {
     private final Label title = new Label();
@@ -29,12 +33,30 @@ public class MovieCell extends ListCell<Movie> {
                             ? movie.getDescription()
                             : "No description available"
             );
+            List<Genre> genresList = movie.getGenres();
+
+            // Create a StringBuilder to concatenate the genres
+            StringBuilder genresText = new StringBuilder();
+
+            // Iterate over the genres list and append each genre name to the StringBuilder
+            for (Genre genre : genresList) {
+                genresText.append(genre.toString()).append(", "); // Use toString() to get the string representation of the enum value
+            }
+
+            // Remove the last comma and space if they exist
+            if (genresText.length() > 0) {
+                genresText.setLength(genresText.length() - 2);
+            }
+
+            // Set the concatenated genres text to the genre label
+            genre.setText(genresText.toString());
 
 
             // color scheme
             title.getStyleClass().add("text-yellow");
             detail.getStyleClass().add("text-white");
-            genre.getStyleClass().add("text-italic");
+            genre.getStyleClass().add("text-white");
+            genre.getStyleClass().add("text-cursive");
             layout.setBackground(new Background(new BackgroundFill(Color.web("#454545"), null, null)));
 
             // layout
