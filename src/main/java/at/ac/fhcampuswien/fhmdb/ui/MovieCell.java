@@ -48,7 +48,7 @@ public class MovieCell extends ListCell<Movie> {
             }
 
             genre.setText(genresText.toString());
-
+            //test
 
             // color scheme
             title.getStyleClass().add("text-yellow");
