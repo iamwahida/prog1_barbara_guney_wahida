@@ -29,6 +29,7 @@ public class Movie {
     public static List<Movie> initializeMovies(){
         List<Movie> movies = new ArrayList<>();
         // TODO add some dummy data here
+    //test
 
         movies.add(new Movie("Now you see me","Four magicians (Eisenberg, Harrelson, Fisher, and Franco) are invited to an address. Inside, they encounter a few tricks. A year later, these four have become The Four Horsemen and are doing a show in Las Vegas. They end the first performance that we see with a bank robbery that doesn't look like an illusion.", List.of(Genre.ACTION, Genre.CRIME, Genre.MYSTERY)));
         movies.add(new Movie("No Country for Old Men","The film follows three main characters: Llewelyn Moss (Brolin), a Vietnam War veteran and welder who stumbles upon a large sum of money in the desert; Anton Chigurh (Bardem), a hitman who is sent to recover the money; and Ed Tom Bell (Jones), a sheriff investigating the crime.", List.of(Genre.ACTION, Genre.DRAMA, Genre.WESTERN)));
