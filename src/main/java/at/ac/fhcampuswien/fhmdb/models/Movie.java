@@ -16,7 +16,8 @@ public class Movie {
         this.genres = genres;
     }
 
-    //Test commment
+    //Test commment 1
+    //Test comment 2
 
     public String getTitle() {
         return title;
