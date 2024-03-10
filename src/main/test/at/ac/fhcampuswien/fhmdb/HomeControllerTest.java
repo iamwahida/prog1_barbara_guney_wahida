@@ -19,10 +19,10 @@ public class HomeControllerTest {
     void test_if_correct_movies_are_filtered_when_text_is_entered() {
         HomeController controller = new HomeController();
 
-        List<Movie> filteredMovies = controller.filteredMovies(allMovies, "Avatar");
+        List<Movie> filteredMovies = controller.filteredMovies(allMovies, "Avengers");
 
         for (Movie movie : filteredMovies) {
-            assertEquals("Avatar", movie.getTitle());
+            assertEquals("Avengers", movie.getTitle());
         }
     }
 }
