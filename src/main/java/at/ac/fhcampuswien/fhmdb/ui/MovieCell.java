@@ -40,15 +40,13 @@ public class MovieCell extends ListCell<Movie> {
 
             // Iterate over the genres list and append each genre name to the StringBuilder
             for (Genre genre : genresList) {
-                genresText.append(genre.toString()).append(", "); // Use toString() to get the string representation of the enum value
+                genresText.append(genre.toString()).append(", ");
             }
 
-            // Remove the last comma and space if they exist
             if (genresText.length() > 0) {
                 genresText.setLength(genresText.length() - 2);
             }
 
-            // Set the concatenated genres text to the genre label
             genre.setText(genresText.toString());
 
 
