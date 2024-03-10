@@ -29,7 +29,14 @@ public class MovieCell extends ListCell<Movie> {
                             ? movie.getDescription()
                             : "No description available"
             );
-
+            StringBuilder listWithoutBrackets = new StringBuilder();
+            for(int i = 0; i < movie.getListGenres().size(); i++){
+                listWithoutBrackets.append(movie.getListGenres().get(i));
+                if(i < movie.getListGenres().size() - 1){
+                    listWithoutBrackets.append(", ");
+                }
+            }
+            genre.setText(listWithoutBrackets.toString());
 
             // color scheme
             title.getStyleClass().add("text-yellow");
