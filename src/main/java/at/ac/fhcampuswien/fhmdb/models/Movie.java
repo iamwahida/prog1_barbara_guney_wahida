@@ -56,6 +56,11 @@ public class Movie {
         movies.add(new Movie("Star Wars: Episode IV - A New Hope", "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.", List.of(Genre.ACTION, Genre.ADVENTURE, Genre.FANTASY)));
         movies.add(new Movie("The Sound of Music", "A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.", List.of(Genre.BIOGRAPHY, Genre.DRAMA, Genre.MUSICAL)));
         movies.add(new Movie("High Noon", "A town Marshal, despite the disagreements of his newlywed bride and the townspeople around him, must face a gang of deadly killers alone at high noon when the gang leader, an outlaw he sent up years ago, arrives on the noon train.", List.of(Genre.DRAMA, Genre.WESTERN)));
+        movies.add(new Movie("The Shining", "A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.", List.of(Genre.HORROR, Genre.DRAMA)));
+        movies.add(new Movie("Gone Girl", "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.", List.of(Genre.THRILLER, Genre.DRAMA, Genre.MYSTERY)));
+        movies.add(new Movie("Saving Private Ryan", "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.", List.of(Genre.WAR, Genre.DRAMA)));
+
+
 
         return movies;
     }
