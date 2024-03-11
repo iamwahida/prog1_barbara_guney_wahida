@@ -1,15 +1,11 @@
 package at.ac.fhcampuswien.fhmdb;
 
 
-import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static at.ac.fhcampuswien.fhmdb.models.Movie.initializeMovies;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HomeControllerTest {
