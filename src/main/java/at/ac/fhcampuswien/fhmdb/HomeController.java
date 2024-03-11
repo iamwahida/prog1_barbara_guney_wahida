@@ -41,7 +41,7 @@ public class HomeController implements Initializable {
 
     int buttonClicks = 0;
 
-    private List <Movie> filteredMovies = new ArrayList<>();
+    public List <Movie> filteredMovies = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
