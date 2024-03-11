@@ -4,7 +4,9 @@ package at.ac.fhcampuswien.fhmdb;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,6 +44,25 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
     }
 
     @Test
+    void test_if_movie_object_is_correctly_instantiated(){
+        //Arrange
+        List <Movie.Genre> genresList = new ArrayList<>();
+        genresList.add(Movie.Genre.DRAMA);
+        genresList.add(Movie.Genre.ACTION);
+        genresList.add(Movie.Genre.ADVENTURE);
+
+        //Act
+        Movie movie = new Movie("Java Unit Tests", "A movie about testing your programs", genresList);
+
+        //Assert
+        assertEquals("Java Unit Tests", movie.getTitle());
+        assertEquals("A movie about testing your programs", movie.getDescription());
+        assertTrue(movie.getListGenres().contains(Movie.Genre.DRAMA));
+        assertTrue(movie.getListGenres().contains(Movie.Genre.ACTION));
+        assertTrue(movie.getListGenres().contains(Movie.Genre.ADVENTURE));
+    }
+
+    @Test
     void test_if_correct_movies_are_filtered_when_text_is_entered() {
         HomeController controller = new HomeController();
 
@@ -54,6 +75,27 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
 
             assertTrue(isInTitle || isInDescription, "Movie should contain the search text in its title or description.");
         }
+    }
+
+    @Test
+    void test_sort_ascending(){
+        //Arrange
+        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
+        //Act
+        movies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
+        //Assert
+        assertTrue(movies.get(0).getTitle().equals("a"));
+        assertTrue(movies.get(4).getTitle().equals("zz"));
+    }
+    @Test
+    void test_sort_descending(){
+        //Arrange
+        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
+        //Act
+        movies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
+        //Assert
+        assertTrue(movies.get(4).getTitle().equals("a"));
+        assertTrue(movies.get(0).getTitle().equals("zz"));
     }
 
 }
