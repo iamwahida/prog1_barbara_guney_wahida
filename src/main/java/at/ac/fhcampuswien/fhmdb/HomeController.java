@@ -79,14 +79,15 @@ public class HomeController implements Initializable {
                         setFilteredList();
                     }
 
-                } else if (buttonClicks == 2){
-                   buttonClicks = 0;
                 }
+                buttonClicks--;
             }
         });
         undoFilter.setOnAction(ActionEvent -> {
-            observableMovies.clear();
+            genreComboBox.setValue(null);
+            searchField.clear();
             setBackOriginalList();
+
         });
 
         // Sort button example:
