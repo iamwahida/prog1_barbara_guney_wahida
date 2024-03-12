@@ -34,6 +34,9 @@ public class HomeController implements Initializable {
     @FXML
     public JFXButton sortBtn;
 
+    @FXML
+    public JFXButton undoFilter;
+
     public List <Movie> allMovies = Movie.initializeMovies();
 
     private final ObservableList <Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
@@ -77,12 +80,13 @@ public class HomeController implements Initializable {
                     }
 
                 } else if (buttonClicks == 2){
-                    genreComboBox.setValue(null);
-                    searchField.clear();
-                    setBackOriginalList();
-                    buttonClicks = 0;
+                   buttonClicks = 0;
                 }
             }
+        });
+        undoFilter.setOnAction(ActionEvent -> {
+            observableMovies.clear();
+            setBackOriginalList();
         });
 
         // Sort button example:
