@@ -21,11 +21,11 @@ public class MovieCell extends ListCell<Movie> {
 
         if (empty || movie == null) {
             setText(null);
+            setGraphic(null);
         } else {
             this.getStyleClass().add("movie-cell");
             title.setText(movie.getTitle());
-            detail.setText(
-                    movie.getDescription() != null
+            detail.setText(movie.getDescription() != null
                             ? movie.getDescription()
                             : "No description available"
             );

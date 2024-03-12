@@ -7,7 +7,9 @@ public class Movie {
     private String title;
     private String description;
     // TODO add more properties here -> DONE
-    public enum Genre {ACTION, ADVENTURE, ANIMATION, BIOGRAPHY, COMEDY, CRIME, DRAMA, DOCUMENTARY, FAMILY, FANTASY, HISTORY, HORROR, MUSICAL, MYSTERY, ROMANCE, SCIENCE_FICTION, SPORT, THRILLER, WAR, WESTERN}
+    public enum Genre {ACTION, ADVENTURE, ANIMATION, BIOGRAPHY, COMEDY,
+        CRIME, DRAMA, DOCUMENTARY, FAMILY, FANTASY, HISTORY, HORROR,
+        MUSICAL, MYSTERY, ROMANCE, SCIENCE_FICTION, SPORT, THRILLER, WAR, WESTERN}
     private List <Genre> genres;
 
 
