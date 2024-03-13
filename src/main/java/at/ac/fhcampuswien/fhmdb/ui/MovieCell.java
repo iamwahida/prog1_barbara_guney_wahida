@@ -32,7 +32,7 @@ public class MovieCell extends ListCell<Movie> {
             StringBuilder listWithoutBrackets = new StringBuilder();
             for(int i = 0; i < movie.getListGenres().size(); i++){
                 listWithoutBrackets.append(movie.getListGenres().get(i));
-                if(i < movie.getListGenres().size() - 1){
+                if(i < movie.getListGenres().size() - 1) {
                     listWithoutBrackets.append(", ");
                 }
             }

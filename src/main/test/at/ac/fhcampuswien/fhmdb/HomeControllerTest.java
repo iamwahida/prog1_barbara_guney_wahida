@@ -78,6 +78,25 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
     }
 
     @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+    @Test
     void test_sort_ascending(){
         //Arrange
         List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
