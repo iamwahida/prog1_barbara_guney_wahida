@@ -46,7 +46,6 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
@@ -57,7 +56,6 @@
                     <source>17</source>
                     <target>17</target>
                 </configuration>
-
             </plugin>
             <plugin>
                 <groupId>org.openjfx</groupId>
