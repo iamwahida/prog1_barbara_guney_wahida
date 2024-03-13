@@ -42,8 +42,6 @@ public class HomeController implements Initializable {
     private final ObservableList <Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
     private final ObservableList <Movie.Genre> observableGenre = FXCollections.observableArrayList(Movie.Genre.values());
 
-    int buttonClicks = 0;
-
     public List <Movie> filteredMovies = new ArrayList<>();
 
     @Override
