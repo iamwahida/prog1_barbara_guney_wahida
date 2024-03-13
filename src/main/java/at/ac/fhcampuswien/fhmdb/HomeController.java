@@ -62,30 +62,26 @@ public class HomeController implements Initializable {
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                buttonClicks++;
+                filteredMovies.clear();
+                if(genreComboBox.getValue() != null && searchField.getText().isEmpty()){
+                    getMovies(genreComboBox.getValue());
+                    setFilteredList();
 
-                if(buttonClicks == 1){
-                    filteredMovies.clear();
-                    if(genreComboBox.getValue() != null && searchField.getText().isEmpty()){
-                        getMovies(genreComboBox.getValue());
-                        setFilteredList();
+                } else if(!searchField.getText().isEmpty() && genreComboBox.getValue() == null){
+                    getMovies(searchField.getText());
+                    setFilteredList();
 
-                    } else if(!searchField.getText().isEmpty() && genreComboBox.getValue() == null){
-                        getMovies(searchField.getText());
-                        setFilteredList();
-
-                    }  else {
-                        getMovies(genreComboBox.getValue(), searchField.getText());
-                        setFilteredList();
-                    }
-
+                }  else {
+                    getMovies(genreComboBox.getValue(), searchField.getText());
+                    setFilteredList();
                 }
-                buttonClicks--;
+
             }
         });
         undoFilter.setOnAction(ActionEvent -> {
             genreComboBox.setValue(null);
             searchField.clear();
+            sortBtn.setText("Sort (asc)");
             setBackOriginalList();
 
         });
