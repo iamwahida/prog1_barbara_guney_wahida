@@ -6,10 +6,7 @@ import java.util.List;
 public class Movie {
     private String title;
     private String description;
-    // TODO add more properties here -> DONE
-    public enum Genre {ACTION, ADVENTURE, ANIMATION, BIOGRAPHY, COMEDY,
-        CRIME, DRAMA, DOCUMENTARY, FAMILY, FANTASY, HISTORY, HORROR,
-        MUSICAL, MYSTERY, ROMANCE, SCIENCE_FICTION, SPORT, THRILLER, WAR, WESTERN}
+
     private List <Genre> genres;
 
 
@@ -32,7 +29,6 @@ public class Movie {
 
     public static List<Movie> initializeMovies() {
         List<Movie> movies = new ArrayList<>();
-        // TODO add some dummy data here -> DONE
 
         movies.add(new Movie("Now you see me","Four magicians (Eisenberg, Harrelson, Fisher, and Franco) are invited to an address. Inside, they encounter a few tricks. A year later, these four have become The Four Horsemen and are doing a show in Las Vegas. They end the first performance that we see with a bank robbery that doesn't look like an illusion.", List.of(Genre.ACTION, Genre.CRIME, Genre.MYSTERY)));
         movies.add(new Movie("No Country for Old Men","The film follows three main characters: Llewelyn Moss (Brolin), a Vietnam War veteran and welder who stumbles upon a large sum of money in the desert; Anton Chigurh (Bardem), a hitman who is sent to recover the money; and Ed Tom Bell (Jones), a sheriff investigating the crime.", List.of(Genre.ACTION, Genre.DRAMA, Genre.WESTERN)));
@@ -61,9 +57,6 @@ public class Movie {
         movies.add(new Movie("The Shining", "A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.", List.of(Genre.HORROR, Genre.DRAMA)));
         movies.add(new Movie("Gone Girl", "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.", List.of(Genre.THRILLER, Genre.DRAMA, Genre.MYSTERY)));
         movies.add(new Movie("Saving Private Ryan", "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.", List.of(Genre.WAR, Genre.DRAMA)));
-
-
-
         return movies;
     }
 }

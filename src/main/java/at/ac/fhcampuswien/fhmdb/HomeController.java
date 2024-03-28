@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.fhmdb;
 
+import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import at.ac.fhcampuswien.fhmdb.ui.MovieCell;
 import com.jfoenix.controls.JFXButton;
@@ -18,7 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static at.ac.fhcampuswien.fhmdb.models.Movie.*;
+
 public class HomeController implements Initializable {
+    public static final String SORT_ASC = "Sort (asc)";
+    public static final String SORT_DESC = "Sort (desc)";
     @FXML
     public JFXButton searchBtn;
 
@@ -37,10 +42,10 @@ public class HomeController implements Initializable {
     @FXML
     public JFXButton undoFilter;
 
-    public List <Movie> allMovies = Movie.initializeMovies();
+    public List <Movie> allMovies = initializeMovies();
 
     private final ObservableList <Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
-    private final ObservableList <Movie.Genre> observableGenre = FXCollections.observableArrayList(Movie.Genre.values());
+    private final ObservableList <Genre> observableGenre = FXCollections.observableArrayList(Genre.values());
 
     public List <Movie> filteredMovies = new ArrayList<>();
     public List <Movie> getFilteredMovies(){return this.filteredMovies; }
@@ -52,12 +57,9 @@ public class HomeController implements Initializable {
         movieListView.setItems(observableMovies);   // set data of observable list to list view
         movieListView.setCellFactory(movieListView -> new MovieCell()); // use custom cell factory to display data
 
-        // TODO add genre filter items with genreComboBox.getItems().addAll(...)
         genreComboBox.setPromptText("Filter by Genre");
         genreComboBox.getItems().addAll(observableGenre);
 
-        // TODO add event handlers to buttons and call the regarding methods
-        // either set event handlers in the fxml file (onAction) or add them here
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -81,21 +83,19 @@ public class HomeController implements Initializable {
         undoFilter.setOnAction(ActionEvent -> {
             genreComboBox.setValue(null);
             searchField.clear();
-            sortBtn.setText("Sort (asc)");
+            sortBtn.setText(SORT_ASC);
             setBackOriginalList();
 
         });
 
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
-            if(sortBtn.getText().equals("Sort (asc)")) {
-                // TODO sort observableMovies ascending
+            if(sortBtn.getText().equals(SORT_ASC)) {
                 observableMovies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
-                sortBtn.setText("Sort (desc)");
+                sortBtn.setText(SORT_DESC);
             } else {
-                // TODO sort observableMovies descending
                 observableMovies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
-                sortBtn.setText("Sort (asc)");
+                sortBtn.setText(SORT_DESC);
             }
         });
     }
@@ -111,7 +111,7 @@ public class HomeController implements Initializable {
         return filteredMovies;
     }
 
-    public List <Movie> getMovies(String string){
+    public List<Movie> getMovies(String string){
         String trimmed = string.trim();
         for(Movie movie: observableMovies){
             if(movie.getTitle().toLowerCase().contains(trimmed.toLowerCase()) || movie.getDescription().toLowerCase().contains(trimmed.toLowerCase())){
@@ -146,6 +146,4 @@ public class HomeController implements Initializable {
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
     }
-
-
 }
