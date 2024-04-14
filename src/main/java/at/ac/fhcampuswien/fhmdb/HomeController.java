@@ -164,6 +164,28 @@ public class HomeController implements Initializable {
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
     }
+
+    int getLongestMovieTitle(List<Movie> movies) {
+        return movies.stream()
+                .map(Movie::getTitle)
+                .max(Comparator.comparingInt(String::length))
+                .map(String::length)
+                .orElse(0);
+    }
+
+    List<Movie> getMoviesBetweenYears(List<Movie> movies, int startYear, int endYear) {
+        return movies.stream()
+                .filter(movie -> {
+                    try {
+                        int year = Integer.parseInt(movie.getReleaseYear());
+                        return year >= startYear && year <= endYear;
+                    } catch (NumberFormatException e) {
+                        return false;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
     public String getMostPopularActor(List<Movie> movies) {
         return movies.stream()
                 .flatMap(movie -> movie.getMainCast().stream())
