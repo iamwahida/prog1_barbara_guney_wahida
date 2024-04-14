@@ -98,4 +98,35 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
         assertTrue(movies.get(0).getTitle().equals("zz"));
     }
 
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies("Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+
 }

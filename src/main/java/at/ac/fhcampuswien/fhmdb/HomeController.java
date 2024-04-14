@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.fhmdb;
 
 import at.ac.fhcampuswien.fhmdb.models.Movie;
+import at.ac.fhcampuswien.fhmdb.models.Movie.Genre;
 import at.ac.fhcampuswien.fhmdb.ui.MovieCell;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,12 @@ public class HomeController implements Initializable {
     public JFXComboBox genreComboBox;
 
     @FXML
+    public JFXComboBox releaseYearComboBox;
+
+    @FXML
+    public JFXComboBox ratingComboBox;
+
+    @FXML
     public JFXButton sortBtn;
 
     @FXML
@@ -44,6 +52,11 @@ public class HomeController implements Initializable {
 
     public List <Movie> filteredMovies = new ArrayList<>();
 
+    public HomeController() throws IOException {
+    }
+
+    public List <Movie> getFilteredMovies(){return this.filteredMovies; }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         observableMovies.addAll(allMovies);         // add dummy data to observable list
@@ -53,6 +66,8 @@ public class HomeController implements Initializable {
 
         // TODO add genre filter items with genreComboBox.getItems().addAll(...)
         genreComboBox.setPromptText("Filter by Genre");
+        releaseYearComboBox.setPromptText("Filter by Release Year");
+        ratingComboBox.setPromptText("Filter by Rating");
         genreComboBox.getItems().addAll(observableGenre);
 
         // TODO add event handlers to buttons and call the regarding methods
@@ -69,7 +84,9 @@ public class HomeController implements Initializable {
                     getMovies(searchField.getText());
                     setFilteredList();
 
-                }  else {
+                } else if(searchField.getText().isEmpty() && genreComboBox.getValue() == null){
+                    setBackOriginalList();
+                } else {
                     getMovies(genreComboBox.getValue(), searchField.getText());
                     setFilteredList();
                 }

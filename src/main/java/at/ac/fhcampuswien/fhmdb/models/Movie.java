@@ -1,7 +1,13 @@
 package at.ac.fhcampuswien.fhmdb.models;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.IOException;
+import java.io.FileReader;
+import com.google.gson.Gson;
 
 public class Movie {
     private String title;
@@ -11,12 +17,16 @@ public class Movie {
         CRIME, DRAMA, DOCUMENTARY, FAMILY, FANTASY, HISTORY, HORROR,
         MUSICAL, MYSTERY, ROMANCE, SCIENCE_FICTION, SPORT, THRILLER, WAR, WESTERN}
     private List <Genre> genres;
+    private String releaseYear;
+    private String rating;
 
 
-    public Movie(String title, String description, List <Genre> genres) {
+    public Movie(String title, String description, List <Genre> genres, String releaseYear, String rating) {
         this.title = title;
         this.description = description;
         this.genres = genres;
+        this.releaseYear = releaseYear;
+        this.rating = rating;
     }
 
     public String getTitle() {
@@ -29,8 +39,23 @@ public class Movie {
 
     public List <Genre> getListGenres(){ return genres; }
 
+    public String getReleaseYear(){ return releaseYear; }
 
-    public static List<Movie> initializeMovies() {
+    public String getRating(){ return rating; }
+
+
+    public static List <Movie> initializeMovies() throws IOException {
+        MovieAPI movieApi = new MovieAPI();
+        List <Movie> movies;
+        String outputPath = "apiResponse.json";
+        movieApi.getDataAndSaveAsJson("https://prog2.fh-campuswien.ac.at/movies", outputPath);
+        movies = movieApi.readMoviesFromJsonFile(outputPath);
+        return movies;
+    }
+
+
+
+    /*public static List<Movie> initializeMovies() {
         List<Movie> movies = new ArrayList<>();
         // TODO add some dummy data here -> DONE
 
@@ -65,5 +90,5 @@ public class Movie {
 
 
         return movies;
-    }
+    }*/
 }
