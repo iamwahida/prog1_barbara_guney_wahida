@@ -19,7 +19,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class HomeController implements Initializable {
     @FXML
@@ -45,6 +47,11 @@ public class HomeController implements Initializable {
 
     @FXML
     public JFXButton undoFilter;
+    @FXML
+    public JFXButton popularActorBtn;
+
+    @FXML
+    public JFXButton moviesByDirectorBtn;
 
     public List<Movie> allMovies = Movie.initializeMovies();
 
@@ -121,6 +128,18 @@ public class HomeController implements Initializable {
                 sortBtn.setText("Sort (asc)");
             }
         });
+        popularActorBtn.setOnAction(event -> {
+            String mostPopularActor = getMostPopularActor(filteredMovies);
+            // Display or use the most popular actor information as needed...
+            System.out.println("Most popular actor: " + mostPopularActor);
+        });
+
+        moviesByDirectorBtn.setOnAction(event -> {
+            String director = "Christopher Nolan"; // Replace with the desired director's name
+            long moviesCount = countMoviesFrom(filteredMovies, director);
+            // Display or use the count of movies by the director as needed...
+            System.out.println("Number of movies directed by " + director + ": " + moviesCount);
+        });
     }
 
     public void setFilteredList() {
@@ -144,6 +163,21 @@ public class HomeController implements Initializable {
         observableMovies.addAll(allMovies);
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
+    }
+    public String getMostPopularActor(List<Movie> movies) {
+        return movies.stream()
+                .flatMap(movie -> movie.getMainCast().stream())
+                .collect(Collectors.groupingBy(actor -> actor, Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
+
+    public long countMoviesFrom(List<Movie> movies, String director) {
+        return movies.stream()
+                .filter(movie -> movie.getDirector().equalsIgnoreCase(director))
+                .count();
     }
 
 }
