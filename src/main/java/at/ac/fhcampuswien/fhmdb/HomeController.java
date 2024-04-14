@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -88,15 +89,8 @@ public class HomeController implements Initializable {
             String genre = genreComboBox.getValue();
             String releaseYear = releaseYearComboBox.getValue();
             String rating = ratingComboBox.getValue();
-            if (searchText == null) {
-                searchText = "";
-            } else if (genre == null) {
-                genre = "";
-            } else if (releaseYear == null) {
-                releaseYear = "";
-            } else if (rating == null) {
-                rating = "";
-            }
+
+
             try {
                 filteredMovies = Movie.filterMovies(searchText, genre, releaseYear, rating);
                 setFilteredList();
@@ -140,6 +134,7 @@ public class HomeController implements Initializable {
         for (Movie movie : allMovies) {
             String trimmedYear = movie.getReleaseYear().substring(0, movie.getReleaseYear().length() - 2);
             releaseYears.add(trimmedYear);
+            releaseYears.sort(Comparator.naturalOrder());
         }
         return releaseYears;
     }
