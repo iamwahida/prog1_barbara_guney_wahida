@@ -34,6 +34,8 @@
          <JFXComboBox fx:id="genreComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
          <JFXComboBox fx:id="releaseYearComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
          <JFXComboBox fx:id="ratingComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
+         <JFXButton fx:id="popularActorBtn" styleClass="background-white" text="Most Popular Actor" />
+         <JFXButton fx:id="moviesByDirectorBtn" styleClass="background-white" text="Movies of Director" />
          <JFXButton fx:id="searchBtn" styleClass="background-yellow" stylesheets="@styles.css" text="Filter" />
          <JFXButton fx:id="undoFilter" styleClass="background-yellow" stylesheets="@styles.css" text="Undo" />
       </children>

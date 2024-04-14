@@ -15,6 +15,8 @@ public class Movie {
     private List <String> genres;
     private String releaseYear;
     private String rating;
+    private List<String> mainCast;
+    private String director;
 
 
     public Movie(String title, String description, List <String> genres, String releaseYear, String rating) {
@@ -38,6 +40,13 @@ public class Movie {
     public String getReleaseYear(){ return releaseYear; }
 
     public String getRating(){ return rating; }
+    public List<String> getMainCast() {
+        return mainCast;
+    }
+
+    public String getDirector() {
+        return director;
+    }
 
 
     public static List <Movie> initializeMovies() throws IOException{
