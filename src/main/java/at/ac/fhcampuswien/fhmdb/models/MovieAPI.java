@@ -53,5 +53,4 @@ public class MovieAPI {
         return new Gson().fromJson(fileReader, listType); //Use Gson to deserialize the JSON data into a list of Movies
     }
 
-
 }
