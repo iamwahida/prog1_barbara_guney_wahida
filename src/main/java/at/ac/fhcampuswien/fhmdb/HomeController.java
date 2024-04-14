@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien.fhmdb;
 
-import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
+import at.ac.fhcampuswien.fhmdb.models.MovieAPI;
 import at.ac.fhcampuswien.fhmdb.ui.MovieCell;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -14,16 +14,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static at.ac.fhcampuswien.fhmdb.models.Movie.*;
-
 public class HomeController implements Initializable {
-    public static final String SORT_ASC = "Sort (asc)";
-    public static final String SORT_DESC = "Sort (desc)";
     @FXML
     public JFXButton searchBtn;
 
@@ -34,7 +31,13 @@ public class HomeController implements Initializable {
     public JFXListView movieListView;
 
     @FXML
-    public JFXComboBox genreComboBox;
+    public JFXComboBox<String> genreComboBox;
+
+    @FXML
+    public JFXComboBox<String> releaseYearComboBox;
+
+    @FXML
+    public JFXComboBox<String> ratingComboBox;
 
     @FXML
     public JFXButton sortBtn;
@@ -42,62 +45,132 @@ public class HomeController implements Initializable {
     @FXML
     public JFXButton undoFilter;
 
-    public List <Movie> allMovies = initializeMovies();
+    public List<Movie> allMovies = Movie.initializeMovies();
 
-    private final ObservableList <Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
-    private final ObservableList <Genre> observableGenre = FXCollections.observableArrayList(Genre.values());
+    public List<String> genres = List.of("ACTION", "ADVENTURE", "ANIMATION", "BIOGRAPHY", "COMEDY", "CRIME", "DRAMA", "DOCUMENTARY", "FAMILY", "FANTASY", "HISTORY", "HORROR", "MUSICAL", "MYSTERY", "ROMANCE", "SCIENCE_FICTION", "SPORT", "THRILLER", "WAR");
+    public List<String> releaseYears = new ArrayList<>();
+    public List<String> ratings = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
 
-    public List <Movie> filteredMovies = new ArrayList<>();
-    public List <Movie> getFilteredMovies(){return this.filteredMovies; }
+    private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
+    private final ObservableList<String> observableGenre = FXCollections.observableArrayList(genres);
+    private final ObservableList<String> observableReleaseYears = FXCollections.observableArrayList();
+    private final ObservableList<String> observableRating = FXCollections.observableArrayList(ratings);
+
+    public List<Movie> filteredMovies = new ArrayList<>();
+
+    public List<Movie> getFilteredMovies() {
+        return this.filteredMovies;
+    }
+
+    public HomeController() throws IOException {
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        observableMovies.addAll(allMovies);         // add dummy data to observable list
-        // initialize UI stuff
-        movieListView.setItems(observableMovies);   // set data of observable list to list view
-        movieListView.setCellFactory(movieListView -> new MovieCell()); // use custom cell factory to display data
+        observableMovies.addAll(allMovies);
+        releaseYears = collectYears(allMovies);
+        observableReleaseYears.addAll(releaseYears);
+
+        movieListView.setItems(observableMovies);
+        movieListView.setCellFactory(movieListView -> new MovieCell());
 
         genreComboBox.setPromptText("Filter by Genre");
+        releaseYearComboBox.setPromptText("Filter by Release Year");
+        ratingComboBox.setPromptText("Filter by Rating");
         genreComboBox.getItems().addAll(observableGenre);
+        ratingComboBox.getItems().addAll(observableRating);
+        releaseYearComboBox.getItems().addAll(observableReleaseYears);
 
-        searchBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                filteredMovies.clear();
-                if(genreComboBox.getValue() != null && searchField.getText().isEmpty()){
-                    getMovies(genreComboBox.getValue());
-                    setFilteredList();
-
-                } else if(!searchField.getText().isEmpty() && genreComboBox.getValue() == null){
-                    getMovies(searchField.getText());
-                    setFilteredList();
-
-                }  else {
-                    getMovies(genreComboBox.getValue(), searchField.getText());
-                    setFilteredList();
-                }
-
+        searchBtn.setOnAction(event -> {
+            filteredMovies.clear();
+            String searchText = searchField.getText();
+            String genre = genreComboBox.getValue();
+            String releaseYear = releaseYearComboBox.getValue();
+            String rating = ratingComboBox.getValue();
+            if (searchText == null) {
+                searchText = "";
+            } else if (genre == null) {
+                genre = "";
+            } else if (releaseYear == null) {
+                releaseYear = "";
+            } else if (rating == null) {
+                rating = "";
+            }
+            try {
+                filteredMovies = Movie.filterMovies(searchText, genre, releaseYear, rating);
+                setFilteredList();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
 
         undoFilter.setOnAction(ActionEvent -> {
             genreComboBox.setValue(null);
             searchField.clear();
-            sortBtn.setText(SORT_ASC);
+            ratingComboBox.setValue(null);
+            releaseYearComboBox.setValue(null);
+            sortBtn.setText("Sort (asc)");
             setBackOriginalList();
 
         });
 
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
-            if(sortBtn.getText().equals(SORT_ASC)) {
+            if(sortBtn.getText().equals("Sort (asc)")) {
+                // TODO sort observableMovies ascending
                 observableMovies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
-                sortBtn.setText(SORT_DESC);
+                sortBtn.setText("Sort (desc)");
             } else {
+                // TODO sort observableMovies descending
                 observableMovies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
-                sortBtn.setText(SORT_DESC);
+                sortBtn.setText("Sort (asc)");
             }
         });
+    }
+
+    public void setFilteredList() {
+        observableMovies.clear();
+        observableMovies.addAll(filteredMovies);
+        movieListView.setItems(observableMovies);
+        movieListView.setCellFactory(movieListView -> new MovieCell());
+    }
+
+    public List<String> collectYears(List<Movie> allMovies) {
+        for (Movie movie : allMovies) {
+            String trimmedYear = movie.getReleaseYear().substring(0, movie.getReleaseYear().length() - 2);
+            releaseYears.add(trimmedYear);
+        }
+        return releaseYears;
+    }
+
+    public void setBackOriginalList() {
+        observableMovies.clear();
+        observableMovies.addAll(allMovies);
+        movieListView.setItems(observableMovies);
+        movieListView.setCellFactory(movieListView -> new MovieCell());
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+
+
+
     }
 
     public List <Movie> getMovies(Object object){
@@ -111,7 +184,7 @@ public class HomeController implements Initializable {
         return filteredMovies;
     }
 
-    public List<Movie> getMovies(String string){
+    public List <Movie> getMovies(String string){
         String trimmed = string.trim();
         for(Movie movie: observableMovies){
             if(movie.getTitle().toLowerCase().contains(trimmed.toLowerCase()) || movie.getDescription().toLowerCase().contains(trimmed.toLowerCase())){
@@ -131,19 +204,8 @@ public class HomeController implements Initializable {
             }
         }
         return filteredMovies;
-    }
+    }*/
 
-    public void setFilteredList(){
-        observableMovies.clear();
-        observableMovies.addAll(filteredMovies);
-        movieListView.setItems(observableMovies);
-        movieListView.setCellFactory(movieListView -> new MovieCell());
-    }
 
-    public void setBackOriginalList(){
-        observableMovies.clear();
-        observableMovies.addAll(allMovies);
-        movieListView.setItems(observableMovies);
-        movieListView.setCellFactory(movieListView -> new MovieCell());
-    }
-}
+
+

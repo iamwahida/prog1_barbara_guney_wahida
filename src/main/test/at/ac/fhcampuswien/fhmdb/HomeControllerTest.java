@@ -1,16 +1,30 @@
 package at.ac.fhcampuswien.fhmdb;
 
-import at.ac.fhcampuswien.fhmdb.models.Genre;
+
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HomeControllerTest {
+public class HomeControllerTest {
+    public List<Movie> allMovies = Movie.initializeMovies();
+/*
+für Home-Controller
+Richtige Initialisierung der Filme in initializeMovies().
+ --> jeder Film in der Liste hat Titel, Beschreibung und Genre
+ --> Liste darf nicht leer sein
+
+Richtige Filtern und Sortieren der Filme in der HomeController-Klasse.
+
+für Movie:
+Ob die Erstellung neuer Movie-Objekte korrekt funktioniert.
+Ob die Getter-Methoden die richtigen Werte zurückgeben.
+ */
+
     @Test
     void test_if_initialization_of_initializeMovies_is_correct() {
         List<Movie> movies = Movie.initializeMovies();
@@ -32,10 +46,10 @@ class HomeControllerTest {
     @Test
     void test_if_movie_object_is_correctly_instantiated(){
         //Arrange
-        List <Genre> genresList = new ArrayList<>();
-        genresList.add(Genre.DRAMA);
-        genresList.add(Genre.ACTION);
-        genresList.add(Genre.ADVENTURE);
+        List <Movie.Genre> genresList = new ArrayList<>();
+        genresList.add(Movie.Genre.DRAMA);
+        genresList.add(Movie.Genre.ACTION);
+        genresList.add(Movie.Genre.ADVENTURE);
 
         //Act
         Movie movie = new Movie("Java Unit Tests", "A movie about testing your programs", genresList);
@@ -43,9 +57,9 @@ class HomeControllerTest {
         //Assert
         assertEquals("Java Unit Tests", movie.getTitle());
         assertEquals("A movie about testing your programs", movie.getDescription());
-        assertTrue(movie.getListGenres().contains(Genre.DRAMA));
-        assertTrue(movie.getListGenres().contains(Genre.ACTION));
-        assertTrue(movie.getListGenres().contains(Genre.ADVENTURE));
+        assertTrue(movie.getListGenres().contains(Movie.Genre.DRAMA));
+        assertTrue(movie.getListGenres().contains(Movie.Genre.ACTION));
+        assertTrue(movie.getListGenres().contains(Movie.Genre.ADVENTURE));
     }
 
     @Test
@@ -68,7 +82,7 @@ class HomeControllerTest {
         //Arrange
         HomeController hc = new HomeController();
         //Act
-        List <Movie> actualResult = hc.getMovies(Genre.BIOGRAPHY);
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
         //Assert that the filtered list has been updated
         assertEquals(actualResult, hc.getFilteredMovies());
     }
@@ -77,7 +91,7 @@ class HomeControllerTest {
         //Arrange
         HomeController hc = new HomeController();
         //Act
-        List <Movie> actualResult = hc.getMovies(Genre.ACTION, "Story");
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
         //Assert that the filtered list has been updated
         assertEquals(actualResult, hc.getFilteredMovies());
     }
@@ -85,21 +99,53 @@ class HomeControllerTest {
     @Test
     void test_sort_ascending(){
         //Arrange
-        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Genre.ACTION)), new Movie("achello", "Description 2", List.of(Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Genre.CRIME)), new Movie("zz", "Description 4", List.of(Genre.SCIENCE_FICTION)));
+        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
         //Act
         movies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
         //Assert
-        assertEquals("a", movies.get(0).getTitle());
-        assertEquals("zz", movies.get(4).getTitle());
+        assertTrue(movies.get(0).getTitle().equals("a"));
+        assertTrue(movies.get(4).getTitle().equals("zz"));
     }
     @Test
     void test_sort_descending(){
         //Arrange
-        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Genre.ACTION)), new Movie("achello", "Description 2", List.of(Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Genre.CRIME)), new Movie("zz", "Description 4", List.of(Genre.SCIENCE_FICTION)));
+        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
         //Act
         movies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
         //Assert
-        assertEquals("a", movies.get(4).getTitle());
-        assertEquals("zz", movies.get(0).getTitle());
+        assertTrue(movies.get(4).getTitle().equals("a"));
+        assertTrue(movies.get(0).getTitle().equals("zz"));
     }
+
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies("Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+
+
 }

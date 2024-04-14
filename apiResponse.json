@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a00b56aa-0eaf-4332-a02d-736910950128",
+    "title": "The Godfather",
+    "genres": [
+      "DRAMA"
+    ],
+    "releaseYear": 1972.0,
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "lengthInMinutes": 175.0,
+    "directors": [
+      "Francis Ford Coppola"
+    ],
+    "writers": [
+      "Mario Puzo",
+      "Francis Ford Coppola"
+    ],
+    "mainCast": [
+      "Marlon Brando",
+      "Al Pacino",
+      "James Caan"
+    ],
+    "rating": 9.2
+  }
+]
