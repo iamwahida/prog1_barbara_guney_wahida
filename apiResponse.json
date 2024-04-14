@@ -1,0 +1,806 @@
+[
+  {
+    "id": "a00b56aa-0eaf-4332-a02d-736910950128",
+    "title": "The Godfather",
+    "genres": [
+      "DRAMA"
+    ],
+    "releaseYear": 1972.0,
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "lengthInMinutes": 175.0,
+    "directors": [
+      "Francis Ford Coppola"
+    ],
+    "writers": [
+      "Mario Puzo",
+      "Francis Ford Coppola"
+    ],
+    "mainCast": [
+      "Marlon Brando",
+      "Al Pacino",
+      "James Caan"
+    ],
+    "rating": 9.2
+  },
+  {
+    "id": "16f94a79-7804-4d73-bab9-6cf415b30182",
+    "title": "The Shawshank Redemption",
+    "genres": [
+      "DRAMA"
+    ],
+    "releaseYear": 1994.0,
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+    "lengthInMinutes": 142.0,
+    "directors": [
+      "Frank Darabont"
+    ],
+    "writers": [
+      "Stephen King",
+      "Frank Darabont"
+    ],
+    "mainCast": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+    ],
+    "rating": 9.3
+  },
+  {
+    "id": "8ca193d8-7879-42ed-820e-6230b52746a3",
+    "title": "The Dark Knight",
+    "genres": [
+      "ACTION",
+      "CRIME",
+      "DRAMA"
+    ],
+    "releaseYear": 2008.0,
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 152.0,
+    "directors": [
+      "Christopher Nolan"
+    ],
+    "writers": [
+      "Jonathan Nolan",
+      "Christopher Nolan"
+    ],
+    "mainCast": [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart"
+    ],
+    "rating": 9.0
+  },
+  {
+    "id": "8213aa96-b8ba-4c36-b070-a968313d9d5f",
+    "title": "Schindler\u0027s List",
+    "genres": [
+      "BIOGRAPHY",
+      "DRAMA",
+      "HISTORY"
+    ],
+    "releaseYear": 1993.0,
+    "description": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazi Germans.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+    "lengthInMinutes": 195.0,
+    "directors": [
+      "Steven Spielberg"
+    ],
+    "writers": [
+      "Steven Zaillian",
+      "Thomas Keneally"
+    ],
+    "mainCast": [
+      "Liam Neeson",
+      "Ralph Fiennes",
+      "Ben Kingsley"
+    ],
+    "rating": 8.9
+  },
+  {
+    "id": "8135fa74-210e-4fe0-885a-45263aa2acd6",
+    "title": "Pulp Fiction",
+    "genres": [
+      "CRIME",
+      "DRAMA"
+    ],
+    "releaseYear": 1994.0,
+    "description": "The lives of two mob hit men, a boxer, a gangster\u0027s wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "lengthInMinutes": 154.0,
+    "directors": [
+      "Quentin Tarantino"
+    ],
+    "writers": [
+      "Quentin Tarantino",
+      "Roger Avary"
+    ],
+    "mainCast": [
+      "John Travolta",
+      "Uma Thurman",
+      "Samuel L. Jackson"
+    ],
+    "rating": 8.9
+  },
+  {
+    "id": "a47afd8a-b768-4a34-8ed6-bf5d90c0feeb",
+    "title": "The Lord of the Rings: The Return of the King",
+    "genres": [
+      "ADVENTURE",
+      "DRAMA",
+      "FANTASY"
+    ],
+    "releaseYear": 2003.0,
+    "description": "Gandalf and Aragorn lead the World of Men against Sauron\u0027s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 201.0,
+    "directors": [
+      "Peter Jackson"
+    ],
+    "writers": [
+      "J.R.R. Tolkien",
+      "Fran Walsh",
+      "Philippa Boyens"
+    ],
+    "mainCast": [
+      "Elijah Wood",
+      "Ian McKellen",
+      "Viggo Mortensen"
+    ],
+    "rating": 8.9
+  },
+  {
+    "id": "4bde30e9-c433-4288-b576-7a51da9e71c8",
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "FANTASY",
+      "SCIENCE_FICTION"
+    ],
+    "releaseYear": 1980.0,
+    "description": "After the rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "lengthInMinutes": 124.0,
+    "directors": [
+      "Irvin Kershner"
+    ],
+    "writers": [
+      "Leigh Brackett",
+      "Lawrence Kasdan",
+      "George Lucas"
+    ],
+    "mainCast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher"
+    ],
+    "rating": 8.7
+  },
+  {
+    "id": "4585b527-7da5-4a2f-b2f6-f13af345b7ab",
+    "title": "The Good, the Bad and the Ugly",
+    "genres": [
+      "WESTERN"
+    ],
+    "releaseYear": 1966.0,
+    "description": "A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNjJlYmNkZGItM2NhYy00MjlmLTk5NmQtNjg1NmM2ODU4OTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 161.0,
+    "directors": [
+      "Sergio Leone"
+    ],
+    "writers": [
+      "Luciano Vincenzoni",
+      "Agenore Incrocci",
+      "Furio Scarpelli",
+      "Sergio Leone"
+    ],
+    "mainCast": [
+      "Clint Eastwood",
+      "Eli Wallach",
+      "Lee Van Cleef"
+    ],
+    "rating": 8.9
+  },
+  {
+    "id": "943aca1d-190c-421e-a1ea-4c42c64c05f6",
+    "title": "12 Angry Men",
+    "genres": [
+      "DRAMA"
+    ],
+    "releaseYear": 1957.0,
+    "description": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 96.0,
+    "directors": [
+      "Sidney Lumet"
+    ],
+    "writers": [
+      "Reginald Rose"
+    ],
+    "mainCast": [
+      "Henry Fonda",
+      "Lee J. Cobb",
+      "Martin Balsam"
+    ],
+    "rating": 8.9
+  },
+  {
+    "id": "e109ec5f-c3af-472d-93e5-9c4c0d04d640",
+    "title": "The Lord of the Rings: The Two Towers",
+    "genres": [
+      "ADVENTURE",
+      "DRAMA",
+      "FANTASY"
+    ],
+    "releaseYear": 2002.0,
+    "description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron\"s new ally, Saruman, and his hordes of Isengard.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZTUxNzg3MDUtYjdmZi00ZDY1LTkyYTgtODlmOGY5N2RjYWUyXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 179.0,
+    "directors": [
+      "Peter Jackson"
+    ],
+    "writers": [
+      "J.R.R. Tolkien",
+      "Fran Walsh",
+      "Philippa Boyens"
+    ],
+    "mainCast": [
+      "Elijah Wood",
+      "Ian McKellen",
+      "Viggo Mortensen"
+    ],
+    "rating": 8.7
+  },
+  {
+    "id": "fb592a9a-4599-406b-bf60-56d00d3e2b1b",
+    "title": "One Flew Over the Cuckoo\"s Nest",
+    "genres": [
+      "DRAMA"
+    ],
+    "releaseYear": 1975.0,
+    "description": "A criminal pleads insanity after getting into trouble again and once in the mental institution rebels against the oppressive nurse and rallies up the scared patients.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+    "lengthInMinutes": 133.0,
+    "directors": [
+      "Milos Forman"
+    ],
+    "writers": [
+      "Lawrence Hauben",
+      "Bo Goldman"
+    ],
+    "mainCast": [
+      "Jack Nicholson",
+      "Louise Fletcher",
+      "William Redfield"
+    ],
+    "rating": 8.7
+  },
+  {
+    "id": "ba48d73a-7332-4712-b36a-8446b7cedd36",
+    "title": "Inception",
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "SCIENCE_FICTION",
+      "THRILLER"
+    ],
+    "releaseYear": 2010.0,
+    "description": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 148.0,
+    "directors": [
+      "Christopher Nolan"
+    ],
+    "writers": [
+      "Christopher Nolan"
+    ],
+    "mainCast": [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Elliot Page"
+    ],
+    "rating": 8.8
+  },
+  {
+    "id": "72302391-e909-4337-ade8-65814288e677",
+    "title": "Goodfellas",
+    "genres": [
+      "BIOGRAPHY",
+      "CRIME",
+      "DRAMA"
+    ],
+    "releaseYear": 1990.0,
+    "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 146.0,
+    "directors": [
+      "Martin Scorsese"
+    ],
+    "writers": [
+      "Nicholas Pileggi",
+      "Nicholas Pileggi"
+    ],
+    "mainCast": [
+      "Robert De Niro",
+      "Ray Liotta",
+      "Joe Pesci"
+    ],
+    "rating": 8.7
+  },
+  {
+    "id": "011e9e20-d54f-4708-a28b-51460c881a37",
+    "title": "The Matrix",
+    "genres": [
+      "ACTION",
+      "SCIENCE_FICTION"
+    ],
+    "releaseYear": 1999.0,
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 136.0,
+    "directors": [
+      "Lana Wachowski",
+      "Lilly Wachowski"
+    ],
+    "writers": [
+      "Lana Wachowski",
+      "Lilly Wachowski"
+    ],
+    "mainCast": [
+      "Keanu Reeves",
+      "Laurence Fishburne",
+      "Carrie-Anne Moss"
+    ],
+    "rating": 8.7
+  },
+  {
+    "id": "80a06df7-26a2-4743-9992-b490ce23cfa9",
+    "title": "Seven",
+    "genres": [
+      "CRIME",
+      "DRAMA",
+      "MYSTERY",
+      "THRILLER"
+    ],
+    "releaseYear": 1995.0,
+    "description": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his modus operandi.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 127.0,
+    "directors": [
+      "David Fincher"
+    ],
+    "writers": [
+      "Andrew Kevin Walker"
+    ],
+    "mainCast": [
+      "Morgan Freeman",
+      "Brad Pitt",
+      "Kevin Spacey"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "1d3e0b7d-02ae-4a38-8a60-9136bfd2f7df",
+    "title": "The Silence of the Lambs",
+    "genres": [
+      "CRIME",
+      "DRAMA",
+      "THRILLER"
+    ],
+    "releaseYear": 1991.0,
+    "description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 118.0,
+    "directors": [
+      "Jonathan Demme"
+    ],
+    "writers": [
+      "Thomas Harris",
+      "Ted Tally"
+    ],
+    "mainCast": [
+      "Jodie Foster",
+      "Anthony Hopkins",
+      "Scott Glenn"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "8cfe3591-13cf-4f19-badd-3e050de0d3ca",
+    "title": "It\"s a Wonderful Life",
+    "genres": [
+      "DRAMA",
+      "FAMILY",
+      "FANTASY"
+    ],
+    "releaseYear": 1946.0,
+    "description": "An angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZjc4NDZhZWMtNGEzYS00ZWU2LThlM2ItNTA0YzQ0OTExMTE2XkEyXkFqcGdeQXVyNjUwMzI2NzU@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 130.0,
+    "directors": [
+      "Frank Capra"
+    ],
+    "writers": [
+      "Frances Goodrich",
+      "Albert Hackett",
+      "Frank Capra"
+    ],
+    "mainCast": [
+      "James Stewart",
+      "Donna Reed",
+      "Lionel Barrymore"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "7f6f1e36-3d5c-4e65-adcc-252f8611bfb9",
+    "title": "Saving Private Ryan",
+    "genres": [
+      "ACTION",
+      "DRAMA",
+      "WAR"
+    ],
+    "releaseYear": 1998.0,
+    "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 169.0,
+    "directors": [
+      "Steven Spielberg"
+    ],
+    "writers": [
+      "Robert Rodat"
+    ],
+    "mainCast": [
+      "Tom Hanks",
+      "Matt Damon",
+      "Tom Sizemore"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "4eefad0a-ed74-4075-a197-b7f833026df9",
+    "title": "City of God",
+    "genres": [
+      "CRIME",
+      "DRAMA"
+    ],
+    "releaseYear": 2002.0,
+    "description": "Two boys growing up in a violent neighborhood of Rio de Janeiro take different paths: one becomes a photographer, the other a drug dealer.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMGU5OWEwZDItNmNkMC00NzZmLTk1YTctNzVhZTJjM2NlZTVmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 130.0,
+    "directors": [
+      "Fernando Meirelles",
+      "Kátia Lund"
+    ],
+    "writers": [
+      "Paulo Lins",
+      "Bráulio Mantovani"
+    ],
+    "mainCast": [
+      "Alexandre Rodrigues",
+      "Matheus Nachtergaele",
+      "Leandro Firmino"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "781ffcb6-a3a0-4318-a29e-76ad584578c3",
+    "title": "Life Is Beautiful",
+    "genres": [
+      "COMEDY",
+      "DRAMA",
+      "ROMANCE",
+      "WAR"
+    ],
+    "releaseYear": 1997.0,
+    "description": "When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 116.0,
+    "directors": [
+      "Roberto Benigni"
+    ],
+    "writers": [
+      "Vincenzo Cerami",
+      "Roberto Benigni"
+    ],
+    "mainCast": [
+      "Roberto Benigni",
+      "Nicoletta Braschi",
+      "Giorgio Cantarini"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "ba16b92c-4277-4b92-9f3f-ba0202707543",
+    "title": "The Usual Suspects",
+    "genres": [
+      "CRIME",
+      "MYSTERY",
+      "THRILLER"
+    ],
+    "releaseYear": 1995.0,
+    "description": "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat, which begin when five criminals meet at a seemingly random police lineup.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYTViNjMyNmUtNDFkNC00ZDRlLThmMDUtZDU2YWE4NGI2ZjVmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 106.0,
+    "directors": [
+      "Bryan Singer"
+    ],
+    "writers": [
+      "Christopher McQuarrie"
+    ],
+    "mainCast": [
+      "Kevin Spacey",
+      "Gabriel Byrne",
+      "Chazz Palminteri"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "4ba4700f-12f2-47b9-8bb3-49a71a330c0d",
+    "title": "Puss in Boots",
+    "genres": [
+      "ANIMATION",
+      "ADVENTURE",
+      "COMEDY"
+    ],
+    "releaseYear": 2011.0,
+    "description": "An outlaw cat, his childhood egg-friend, and a seductive thief kitty set out in search for the eggs of the fabled Golden Goose to clear his name, restore his lost honor, and regain the trust of his mother and town.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNjMyMDBjMGUtNDUzZi00N2MwLTg1MjItZTk2MDE1OTZmNTYxXkEyXkFqcGdeQXVyMTQ5NjA0NDM0._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 90.0,
+    "directors": [
+      "Chris Miller"
+    ],
+    "writers": [
+      "Tom Wheeler",
+      "Brian Lynch"
+    ],
+    "mainCast": [
+      "Antonio Banderas",
+      "Salma Hayek",
+      "Zach Galifianakis"
+    ],
+    "rating": 6.6
+  },
+  {
+    "id": "e5ba4b50-be0a-489a-a2e5-d4b5466f018c",
+    "title": "Forrest Gump",
+    "genres": [
+      "DRAMA",
+      "ROMANCE"
+    ],
+    "releaseYear": 1994.0,
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 144.0,
+    "directors": [
+      "Robert Zemeckis"
+    ],
+    "writers": [
+      "Eric Roth",
+      "Winston Groom"
+    ],
+    "mainCast": [
+      "Tom Hanks",
+      "Robin Wright",
+      "Gary Sinise"
+    ],
+    "rating": 8.8
+  },
+  {
+    "id": "5f74d045-786c-4e17-a0a7-d6569fe634c1",
+    "title": "The Lion King",
+    "genres": [
+      "ANIMATION",
+      "ADVENTURE",
+      "DRAMA",
+      "FAMILY",
+      "MUSICAL"
+    ],
+    "releaseYear": 1994.0,
+    "description": "Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 88.0,
+    "directors": [
+      "Roger Allers",
+      "Rob Minkoff"
+    ],
+    "writers": [
+      "Irene Mecchi",
+      "Jonathan Roberts",
+      "Linda Woolverton"
+    ],
+    "mainCast": [
+      "Matthew Broderick",
+      "Jeremy Irons",
+      "James Earl Jones"
+    ],
+    "rating": 8.5
+  },
+  {
+    "id": "e6282a86-dd94-493c-9000-6420215cf498",
+    "title": "Spirited Away",
+    "genres": [
+      "ANIMATION",
+      "ADVENTURE",
+      "FAMILY",
+      "FANTASY",
+      "MYSTERY"
+    ],
+    "releaseYear": 2001.0,
+    "description": "During her family\u0027s move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 125.0,
+    "directors": [
+      "Hayao Miyazaki"
+    ],
+    "writers": [
+      "Hayao Miyazaki"
+    ],
+    "mainCast": [
+      "Daveigh Chase",
+      "Suzanne Pleshette",
+      "Miyu Irino"
+    ],
+    "rating": 8.6
+  },
+  {
+    "id": "222775af-c1f4-4ad9-bb46-dd1862651ac8",
+    "title": "Toy Story",
+    "genres": [
+      "ANIMATION",
+      "ADVENTURE",
+      "COMEDY",
+      "FAMILY",
+      "FANTASY"
+    ],
+    "releaseYear": 1995.0,
+    "description": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy\u0027s bedroom.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_.jpg",
+    "lengthInMinutes": 81.0,
+    "directors": [
+      "John Lasseter"
+    ],
+    "writers": [
+      "John Lasseter",
+      "Pete Docter",
+      "Andrew Stanton"
+    ],
+    "mainCast": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Don Rickles"
+    ],
+    "rating": 8.3
+  },
+  {
+    "id": "399f8e7e-7ab7-4e22-94db-3d068fba2ac2",
+    "title": "Avatar",
+    "genres": [
+      "ACTION",
+      "ADVENTURE",
+      "FANTASY",
+      "SCIENCE_FICTION"
+    ],
+    "releaseYear": 2009.0,
+    "description": "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 162.0,
+    "directors": [
+      "James Cameron"
+    ],
+    "writers": [
+      "James Cameron"
+    ],
+    "mainCast": [
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver"
+    ],
+    "rating": 7.8
+  },
+  {
+    "id": "97fbdd27-0097-4a9e-bc49-2b310d2e72e5",
+    "title": "Knives Out",
+    "genres": [
+      "COMEDY",
+      "CRIME",
+      "DRAMA",
+      "MYSTERY",
+      "THRILLER"
+    ],
+    "releaseYear": 2019.0,
+    "description": "A detective investigates the death of a patriarch of an eccentric, combative family.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_.jpg",
+    "lengthInMinutes": 130.0,
+    "directors": [
+      "Rian Johnson"
+    ],
+    "writers": [
+      "Rian Johnson"
+    ],
+    "mainCast": [
+      "Daniel Craig",
+      "Chris Evans",
+      "Ana de Armas"
+    ],
+    "rating": 7.9
+  },
+  {
+    "id": "18b0b0ca-adcb-4e5e-ab90-a7cda5610d21",
+    "title": "Once Upon a Time in Hollywood",
+    "genres": [
+      "COMEDY",
+      "DRAMA"
+    ],
+    "releaseYear": 2019.0,
+    "description": "A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood\u0027s Golden Age in 1969 Los Angeles.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
+    "lengthInMinutes": 161.0,
+    "directors": [
+      "Quentin Tarantino"
+    ],
+    "writers": [
+      "Quentin Tarantino"
+    ],
+    "mainCast": [
+      "Leonardo DiCaprio",
+      "Brad Pitt",
+      "Margot Robbie"
+    ],
+    "rating": 7.7
+  },
+  {
+    "id": "e976e76b-42f1-43d0-b09b-0f70e2016dc7",
+    "title": "Django Unchained",
+    "genres": [
+      "DRAMA",
+      "WESTERN"
+    ],
+    "releaseYear": 2012.0,
+    "description": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
+    "lengthInMinutes": 165.0,
+    "directors": [
+      "Quentin Tarantino"
+    ],
+    "writers": [
+      "Quentin Tarantino"
+    ],
+    "mainCast": [
+      "Jamie Foxx",
+      "Christoph Waltz",
+      "Leonardo DiCaprio"
+    ],
+    "rating": 8.4
+  },
+  {
+    "id": "87279693-cbca-46ea-b12a-d6bdff3dc8c9",
+    "title": "The Wolf of Wall Street",
+    "genres": [
+      "BIOGRAPHY",
+      "COMEDY",
+      "CRIME",
+      "DRAMA"
+    ],
+    "releaseYear": 2013.0,
+    "description": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_FMjpg_UX1000_.jpg",
+    "lengthInMinutes": 180.0,
+    "directors": [
+      "Martin Scorsese"
+    ],
+    "writers": [
+      "Terence Winter"
+    ],
+    "mainCast": [
+      "Leonardo DiCaprio",
+      "Jonah Hill",
+      "Margot Robbie"
+    ],
+    "rating": 8.2
+  }
+]

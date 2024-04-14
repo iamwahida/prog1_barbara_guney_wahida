@@ -50,7 +50,38 @@ public class HomeController implements Initializable {
     private final ObservableList <Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
     private final ObservableList <Movie.Genre> observableGenre = FXCollections.observableArrayList(Movie.Genre.values());
 
-    public List <Movie> filteredMovies = new ArrayList<>();
+    public HomeController() throws IOException {
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        observableMovies.addAll(allMovies);         // add dummy data to observable list
+        // initialize UI stuff
+        movieListView.setItems(observableMovies);   // set data of observable list to list view
+        movieListView.setCellFactory(movieListView -> new MovieCell()); // use custom cell factory to display data
+
+        // TODO add genre filter items with genreComboBox.getItems().addAll(...)
+        genreComboBox.setPromptText("Filter by Genre");
+        releaseYearComboBox.setPromptText("Filter by Release Year");
+        ratingComboBox.setPromptText("Filter by Rating");
+        genreComboBox.getItems().addAll(observableGenre);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public List <Movie> filteredMovies = new ArrayList<>();
     public List <Movie> getFilteredMovies(){return this.filteredMovies; }
 
     public HomeController() throws IOException {
@@ -162,7 +193,7 @@ public class HomeController implements Initializable {
         observableMovies.addAll(allMovies);
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
-    }
+    }*/
 
 
 }

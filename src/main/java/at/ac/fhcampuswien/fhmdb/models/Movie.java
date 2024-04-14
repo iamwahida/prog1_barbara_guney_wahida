@@ -44,7 +44,7 @@ public class Movie {
     public String getRating(){ return rating; }
 
 
-    public static List <Movie> initializeMovies() throws IOException {
+    public static List <Movie> initializeMovies() throws IOException{
         MovieAPI movieApi = new MovieAPI();
         List <Movie> movies;
         String outputPath = "apiResponse.json";
