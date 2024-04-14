@@ -51,6 +51,7 @@ public class HomeController implements Initializable {
     private final ObservableList <Movie.Genre> observableGenre = FXCollections.observableArrayList(Movie.Genre.values());
 
     public List <Movie> filteredMovies = new ArrayList<>();
+    public List <Movie> getFilteredMovies(){return this.filteredMovies; }
 
     public HomeController() throws IOException {
     }
@@ -93,6 +94,7 @@ public class HomeController implements Initializable {
 
             }
         });
+
         undoFilter.setOnAction(ActionEvent -> {
             genreComboBox.setValue(null);
             searchField.clear();
@@ -117,8 +119,8 @@ public class HomeController implements Initializable {
 
     public List <Movie> getMovies(Object object){
         for(Movie movie: observableMovies){
-            for(int i = 0; i < movie.getListGenres().size(); i++){
-                if(movie.getListGenres().get(i).equals(object) && !filteredMovies.contains(movie)){
+            for(int i = 0; i < movie.getListGenres().size(); i++) {
+                if(movie.getListGenres().get(i).equals(object) && !filteredMovies.contains(movie)) {
                     filteredMovies.add(movie);
                 }
             }
