@@ -218,16 +218,16 @@ public class HomeController implements Initializable {
         return movies.stream()
                 .filter(movie -> {
                     try {
-                        // Versuch, das Jahr als Gleitkommazahl zu parsen und dann in eine ganze Zahl umzuwandeln
-                        int year = (int) Float.parseFloat(movie.getReleaseYear().trim());
+                        int year = Integer.parseInt(movie.getReleaseYear().trim());
                         return year >= startYear && year <= endYear;
                     } catch (NumberFormatException e) {
-                        System.out.println("Fehler beim Parsen des Jahres: " + movie.getReleaseYear());
+                        System.out.println("Error with the year: " + movie.getReleaseYear());
                         return false;
                     }
                 })
                 .collect(Collectors.toList());
     }
+
 
 
 
