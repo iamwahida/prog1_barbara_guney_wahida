@@ -257,18 +257,31 @@ public class HomeController implements Initializable {
 
 
 
+/*
 
-   /*
     String getLongestMovieTitle(List<Movie> movies) {
         return movies.stream()
                 .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
                 .map(Movie::getTitle)
                 .orElse("");
     }
-     */
 
 
 
+public Movie getLongestMovieTitle(List<Movie> allMovies) {
+        return allMovies.stream()
+                .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
+                .orElse(null);
+    }
+getLongestMovieTitleBtn.setOnAction(actionEvent -> {
+            Movie longestTitleMovie = getLongestMovieTitle(allMovies);
+
+            if (longestTitleMovie != null) {
+                observableMovies.clear();
+                observableMovies.add(longestTitleMovie);
+                movieListView.setItems(observableMovies);
+            }
+        });
 
 
 

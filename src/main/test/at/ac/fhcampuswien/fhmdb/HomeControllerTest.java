@@ -46,8 +46,93 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
             assertFalse(movie.getListGenres().isEmpty(), "Genre List should not be empty.");
         }
     }
+
     @Test
-    void test_Get_Movies_Between_Years() throws IOException {
+    void test_if_movie_object_is_correctly_instantiated(){
+        //Arrange
+        List<String> genresList = new ArrayList<>();
+        genresList.add("Drama");
+        genresList.add("Action");
+        genresList.add("Adventure");
+
+        //Act
+        Movie movie = new Movie("Test", "Test", genresList, "2008", "8");
+
+        //Assert
+        assertEquals("Java Unit Tests", movie.getTitle());
+        assertEquals("A movie about testing your programs", movie.getDescription());
+        assertTrue(movie.getListGenres().contains("Drama"));
+        assertTrue(movie.getListGenres().contains("Action"));
+        assertTrue(movie.getListGenres().contains("Adventure"));
+    }
+
+    /*@Test
+    void test_if_correct_movies_are_filtered_when_text_is_entered() throws IOException {
+        HomeController controller = new HomeController();
+
+        String searchText = "Avengers";
+        String horror = "Horror";
+        List<Movie> movies = Arrays.asList(
+                new Movie("Movie 1", "1999", List.of(horror), "1999", "8"),
+                new Movie("Movie 2", "2005", List.of(horror), "2005", "7")
+        );
+
+        List<Movie> filteredMovies = controller.getMovies(searchText);
+        for (Movie movie : filteredMovies) {
+            boolean isInTitle = movie.getTitle().contains(searchText);
+            boolean isInDescription = movie.getDescription().contains(searchText);
+
+            assertTrue(isInTitle || isInDescription, "Movie should contain the search text in its title or description.");
+        }
+    }
+
+
+
+    void test_the_items_in_the_filteredMovies_list_by_genre(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Genre.BIOGRAPHY);
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }
+    @Test
+    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
+        //Arrange
+        HomeController hc = new HomeController();
+        //Act
+        List <Movie> actualResult = hc.getMovies(Genre.ACTION, "Story");
+        //Assert that the filtered list has been updated
+        assertEquals(actualResult, hc.getFilteredMovies());
+    }*/
+
+    @Test
+    void test_sort_ascending(){
+        //Arrange
+        String Horror = "Horror";
+        List<Movie> movies = Arrays.asList(
+                new Movie("movie1", "1999", List.of(Horror), "1999", "8"),
+                new Movie("movie2", "2005", List.of(Horror), "2005", "7"));//Act
+        movies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
+        //Assert
+        assertEquals("movie1", movies.get(0).getTitle());
+        assertEquals("movie2", movies.get(1).getTitle());
+    }
+    @Test
+    void test_sort_descending(){
+        //Arrange
+        String Horror = "Horror";
+        List<Movie> movies = Arrays.asList(
+                new Movie("movie1", "1999", List.of(Horror), "1999", "8"),
+                new Movie("movie2", "2005", List.of(Horror), "2005", "7"));
+        //Act
+        movies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
+        //Assert
+        assertEquals("movie2", movies.get(0).getTitle());
+        assertEquals("movie1", movies.get(1).getTitle());
+    }
+    @Test
+    void test_Get_Movies_Between_StartYear_And_Endyear() throws IOException {
         // Arrange
         HomeController homeController = new HomeController();
         String Horror = "Horror";
@@ -66,113 +151,36 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
 
         // Assert
         assertEquals(3, result.size());
-        // Add more specific assertions if needed
-    }
-
-    /*
-    @Test
-    void test_if_movie_object_is_correctly_instantiated(){
-        //Arrange
-        List <Movie.Genre> genresList = new ArrayList<>();
-        genresList.add(Movie.Genre.DRAMA);
-        genresList.add(Movie.Genre.ACTION);
-        genresList.add(Movie.Genre.ADVENTURE);
-
-        //Act
-        Movie movie = new Movie("Java Unit Tests", "A movie about testing your programs", genresList);
-
-        //Assert
-        assertEquals("Java Unit Tests", movie.getTitle());
-        assertEquals("A movie about testing your programs", movie.getDescription());
-        assertTrue(movie.getListGenres().contains(Movie.Genre.DRAMA));
-        assertTrue(movie.getListGenres().contains(Movie.Genre.ACTION));
-        assertTrue(movie.getListGenres().contains(Movie.Genre.ADVENTURE));
     }
 
     @Test
-    void test_if_correct_movies_are_filtered_when_text_is_entered() {
-        HomeController controller = new HomeController();
+    void test_get_Most_Popular_Actor() throws IOException{
+        // Arrange
+        HomeController homeController = new HomeController();
 
-       // controller.initialize(null,null);
-        String searchText = "Avengers";
-        List<Movie> filteredMovies = controller.getMovies(searchText);
-        for (Movie movie : filteredMovies) {
-            boolean isInTitle = movie.getTitle().contains(searchText);
-            boolean isInDescription = movie.getDescription().contains(searchText);
+        // Erstellen von Testfilmen mit verschiedenen Schauspielern
+        Movie movie1 = new Movie("Movie 1", "1999", Arrays.asList("Actor A", "Actor B", "Actor C"), "1999", "8");
+        Movie movie2 = new Movie("Movie 2", "2005", Arrays.asList("Actor B", "Actor D", "Actor E"), "2005", "7");
+        Movie movie3 = new Movie("Movie 3", "2010", Arrays.asList("Actor A", "Actor E", "Actor F"), "2010", "6");
 
-            assertTrue(isInTitle || isInDescription, "Movie should contain the search text in its title or description.");
-        }
-    }
+        List<Movie> movies = Arrays.asList(movie1, movie2, movie3);
 
-    @Test
-    void test_the_items_in_the_filteredMovies_list_by_genre(){
-        //Arrange
-        HomeController hc = new HomeController();
-        //Act
-        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
-        //Assert that the filtered list has been updated
-        assertEquals(actualResult, hc.getFilteredMovies());
+        // Act
+        String mostPopularActor = homeController.getMostPopularActor(movies);
+
+        // Assert
+        assertEquals("Actor A", mostPopularActor);
     }
     @Test
-    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
-        //Arrange
-        HomeController hc = new HomeController();
-        //Act
-        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
-        //Assert that the filtered list has been updated
-        assertEquals(actualResult, hc.getFilteredMovies());
-    }
+    public void test_if_Ratings_List_is_same() throws IOException{
+        // Arrange
+        HomeController homeController = new HomeController();
+        List<String> expectedRatings = List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
 
-    @Test
-    void test_sort_ascending(){
-        //Arrange
-        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
-        //Act
-        movies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
-        //Assert
-        assertTrue(movies.get(0).getTitle().equals("a"));
-        assertTrue(movies.get(4).getTitle().equals("zz"));
-    }
-    @Test
-    void test_sort_descending(){
-        //Arrange
-        List <Movie> movies = Arrays.asList(new Movie("a", "Description 0", List.of(Movie.Genre.BIOGRAPHY)), new Movie("aAchello", "Description 1", List.of(Movie.Genre.ACTION)), new Movie("achello", "Description 2", List.of(Movie.Genre.ROMANCE)), new Movie("Zyyyyzzz", "Description 3", List.of(Movie.Genre.CRIME)), new Movie("zz", "Description 4", List.of(Movie.Genre.SCIENCE_FICTION)));
-        //Act
-        movies.sort((movie1, movie2) -> movie2.getTitle().compareToIgnoreCase(movie1.getTitle()));
-        //Assert
-        assertTrue(movies.get(4).getTitle().equals("a"));
-        assertTrue(movies.get(0).getTitle().equals("zz"));
-    }
+        // Act
+        List<String> actualRatings = homeController.ratings;
 
-    @Test
-    void test_the_items_in_the_filteredMovies_list_by_genre(){
-        //Arrange
-        HomeController hc = new HomeController();
-        //Act
-        List <Movie> actualResult = hc.getMovies(Movie.Genre.BIOGRAPHY);
-        //Assert that the filtered list has been updated
-        assertEquals(actualResult, hc.getFilteredMovies());
+        // Assert
+        assertEquals(expectedRatings, actualRatings, "Ratings list should match expected ratings");
     }
-
-    @Test
-    void test_the_items_in_the_filteredMovies_list_by_genre_and_text_input(){
-        //Arrange
-        HomeController hc = new HomeController();
-        //Act
-        List <Movie> actualResult = hc.getMovies(Movie.Genre.ACTION, "Story");
-        //Assert that the filtered list has been updated
-        assertEquals(actualResult, hc.getFilteredMovies());
-    }
-
-    @Test
-    void test_the_items_in_the_filteredMovies_list_by_text_input(){
-        //Arrange
-        HomeController hc = new HomeController();
-        //Act
-        List <Movie> actualResult = hc.getMovies("Story");
-        //Assert that the filtered list has been updated
-        assertEquals(actualResult, hc.getFilteredMovies());
-    }
-     */
-
 }
