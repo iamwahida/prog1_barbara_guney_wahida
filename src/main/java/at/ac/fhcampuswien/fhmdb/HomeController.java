@@ -47,6 +47,13 @@ public class HomeController implements Initializable {
 
     @FXML
     public JFXButton undoFilter;
+
+    @FXML
+    public JFXButton getLongestMovieTitleBtn;
+
+    @FXML
+    public JFXButton getMoviesBetweenYearsBtn;
+
     @FXML
     public JFXButton popularActorBtn;
 
@@ -140,6 +147,11 @@ public class HomeController implements Initializable {
             // Display or use the count of movies by the director as needed...
             System.out.println("Number of movies directed by " + director + ": " + moviesCount);
         });
+
+        getLongestMovieTitleBtn.setOnAction(actionEvent -> {
+            String longestTitle = getLongestMovieTitle(allMovies);
+            System.out.println("The longest Movie Title: " + longestTitle);
+        });
     }
 
     public void setFilteredList() {
@@ -165,13 +177,13 @@ public class HomeController implements Initializable {
         movieListView.setCellFactory(movieListView -> new MovieCell());
     }
 
-    int getLongestMovieTitle(List<Movie> movies) {
+    String getLongestMovieTitle(List<Movie> movies) {
         return movies.stream()
+                .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
                 .map(Movie::getTitle)
-                .max(Comparator.comparingInt(String::length))
-                .map(String::length)
-                .orElse(0);
+                .orElse("");
     }
+
 
     List<Movie> getMoviesBetweenYears(List<Movie> movies, int startYear, int endYear) {
         return movies.stream()
