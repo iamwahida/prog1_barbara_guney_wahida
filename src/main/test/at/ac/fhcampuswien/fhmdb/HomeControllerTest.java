@@ -4,6 +4,7 @@ package at.ac.fhcampuswien.fhmdb;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HomeControllerTest {
     public List<Movie> allMovies = Movie.initializeMovies();
+
+    public HomeControllerTest() throws IOException {
+    }
 /*
 für Home-Controller
 Richtige Initialisierung der Filme in initializeMovies().
@@ -26,7 +30,7 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
  */
 
     @Test
-    void test_if_initialization_of_initializeMovies_is_correct() {
+    void test_if_initialization_of_initializeMovies_is_correct() throws IOException {
         List<Movie> movies = Movie.initializeMovies();
 
         assertFalse(movies.isEmpty(), "The list is not supposed to be empty.");
@@ -42,7 +46,30 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
             assertFalse(movie.getListGenres().isEmpty(), "Genre List should not be empty.");
         }
     }
+    @Test
+    void test_Get_Movies_Between_Years() throws IOException {
+        // Arrange
+        HomeController homeController = new HomeController();
+        String Horror = "Horror";
+        List<Movie> movies = Arrays.asList(
+                new Movie("Movie 1", "1999", List.of(Horror), "1999", "8"),
+                new Movie("Movie 2", "2005", List.of(Horror), "2005", "7"),
+                new Movie("Movie 3", "2010", List.of(Horror), "2010", "6"),
+                new Movie("Movie 4", "2015", List.of(Horror), "2015", "5"),
+                new Movie("Movie 5", "2020", List.of(Horror), "2020", "4")
+        );
+        int startYear = 2000;
+        int endYear = 2015;
 
+        // Act
+        List<Movie> result = homeController.getMoviesBetweenYears(movies, startYear, endYear);
+
+        // Assert
+        assertEquals(3, result.size());
+        // Add more specific assertions if needed
+    }
+
+    /*
     @Test
     void test_if_movie_object_is_correctly_instantiated(){
         //Arrange
@@ -146,6 +173,6 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
         //Assert that the filtered list has been updated
         assertEquals(actualResult, hc.getFilteredMovies());
     }
-
+     */
 
 }

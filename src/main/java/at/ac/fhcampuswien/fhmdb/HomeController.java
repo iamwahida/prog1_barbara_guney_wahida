@@ -12,15 +12,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.Optional;
+
 
 public class HomeController implements Initializable {
     @FXML
@@ -46,6 +51,16 @@ public class HomeController implements Initializable {
 
     @FXML
     public JFXButton undoFilter;
+
+    @FXML
+    private Label resultLabel;
+
+    @FXML
+    public JFXButton getLongestMovieTitleBtn;
+
+    @FXML
+    public JFXButton getMoviesBetweenYearsBtn;
+
     @FXML
     public JFXButton popularActorBtn;
 
@@ -95,15 +110,8 @@ public class HomeController implements Initializable {
             String genre = genreComboBox.getValue();
             String releaseYear = releaseYearComboBox.getValue();
             String rating = ratingComboBox.getValue();
-            if (searchText == null) {
-                searchText = "";
-            } else if (genre == null) {
-                genre = "";
-            } else if (releaseYear == null) {
-                releaseYear = "";
-            } else if (rating == null) {
-                rating = "";
-            }
+
+
             try {
                 filteredMovies = Movie.filterMovies(searchText, genre, releaseYear, rating);
                 setFilteredList();
@@ -146,6 +154,46 @@ public class HomeController implements Initializable {
             // Display or use the count of movies by the director as needed...
             System.out.println("Number of movies directed by " + director + ": " + moviesCount);
         });
+
+        getLongestMovieTitleBtn.setOnAction(actionEvent -> {
+            Movie longestTitleMovie = allMovies.stream()
+                    .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
+                    .orElse(null);
+
+            if(longestTitleMovie != null) {
+                observableMovies.clear();
+                observableMovies.add(longestTitleMovie);
+                movieListView.setItems(observableMovies);
+            }
+        });
+
+
+        getMoviesBetweenYearsBtn.setOnAction(actionEvent -> {
+            TextInputDialog dialog = new TextInputDialog("2020");
+            dialog.setHeaderText("Search for movies between two years");
+            dialog.setContentText("Enter the start year:");
+
+            Optional<String> startYearResult = dialog.showAndWait();
+            startYearResult.ifPresent(startYearString -> {
+                dialog.setContentText("Enter the end year:");
+                Optional<String> endYearResult = dialog.showAndWait();
+                endYearResult.ifPresent(endYearString -> {
+                    try {
+                        int startYear = Integer.parseInt(startYearString);
+                        int endYear = Integer.parseInt(endYearString);
+
+                        List<Movie> moviesBetweenYears = getMoviesBetweenYears(allMovies, startYear, endYear);
+
+                        observableMovies.clear();
+                        observableMovies.addAll(moviesBetweenYears);
+                        movieListView.setItems(observableMovies);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error");
+                    }
+                });
+            });
+        });
+
     }
 
     public void setFilteredList() {
@@ -159,6 +207,7 @@ public class HomeController implements Initializable {
         for (Movie movie : allMovies) {
             String trimmedYear = movie.getReleaseYear().substring(0, movie.getReleaseYear().length() - 2);
             releaseYears.add(trimmedYear);
+            releaseYears.sort(Comparator.naturalOrder());
         }
         return releaseYears;
     }
@@ -169,6 +218,25 @@ public class HomeController implements Initializable {
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
     }
+
+
+    List<Movie> getMoviesBetweenYears(List<Movie> movies, int startYear, int endYear) {
+        return movies.stream()
+                .filter(movie -> {
+                    try {
+                        int year = Integer.parseInt(movie.getReleaseYear().trim());
+                        return year >= startYear && year <= endYear;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error with the year: " + movie.getReleaseYear());
+                        return false;
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
+
+
+
     public String getMostPopularActor(List<Movie> movies) {
         return movies.stream()
                 .flatMap(movie -> movie.getMainCast().stream())
@@ -190,6 +258,14 @@ public class HomeController implements Initializable {
 
 
 
+   /*
+    String getLongestMovieTitle(List<Movie> movies) {
+        return movies.stream()
+                .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
+                .map(Movie::getTitle)
+                .orElse("");
+    }
+     */
 
 
 
@@ -239,7 +315,3 @@ public class HomeController implements Initializable {
         }
         return filteredMovies;
     }*/
-
-
-
-

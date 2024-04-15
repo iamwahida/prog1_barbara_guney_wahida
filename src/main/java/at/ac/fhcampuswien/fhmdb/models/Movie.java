@@ -37,7 +37,10 @@ public class Movie {
 
     public List <String> getListGenres(){ return genres; }
 
-    public String getReleaseYear(){ return releaseYear; }
+    public String getReleaseYear() {
+        return String.format("%d", (int) Float.parseFloat(this.releaseYear));
+    }
+
 
     public String getRating(){ return rating; }
     public List<String> getMainCast() {
@@ -62,21 +65,27 @@ public class Movie {
         MovieAPI movieApi = new MovieAPI();
         List <Movie> movies;
         String apiURL = "";
-        String outputPath = "apiResponse.json";
-        if(textField != null && genre != null && year != null && rating != null){
-            apiURL = "https://prog2.fh-campuswien.ac.at/movies" + "?" + "query=" + textField + "&genre=" + genre + "&releaseYear=" + year + "&ratingFrom=" + rating;
-            System.out.println(apiURL);
-        } else if(textField == null && genre != null && year != null && rating != null){
-            apiURL = "https://prog2.fh-campuswien.ac.at/movies" + "?" + "&genre=" + genre + "&releaseYear=" + year + "&ratingFrom=" + rating;
-            System.out.println(apiURL);
-        } else if(textField == null && genre == null && year != null && rating != null){
-            apiURL = "https://prog2.fh-campuswien.ac.at/movies" + "?" + "&releaseYear=" + year + "&ratingFrom=" + rating;
-        } else if(textField == null && genre == null && year == null && rating != null){
-            //apiURL = "https://prog2.fh-campuswien.ac.at/movies" + "?" + "ratingFrom=" + rating;
-            System.out.println("all three null");
-            apiURL = "https://prog2.fh-campuswien.ac.at/movies?ratingFrom=9";
-            System.out.println(apiURL);
+        apiURL = "https://prog2.fh-campuswien.ac.at/movies" + "?" + "query=" + textField + "&genre=" + genre + "&releaseYear=" + year + "&ratingFrom=" + rating;
+        if(textField == "" && genre == null && year == null && rating == null){
+            apiURL = "https://prog2.fh-campuswien.ac.at/movies";
+        } else {
+            if(textField == ""){
+                apiURL = apiURL.replace("query=&", "");
+            }
+            if (genre == null){
+                apiURL = apiURL.replace("genre=null&", "");
+            }
+            if(year == null){
+                apiURL = apiURL.replace("releaseYear=null&", "");
+            }
+            if(rating == null){
+                apiURL = apiURL.replace("ratingFrom=null", "");
+            }
         }
+        System.out.println("the url is" + apiURL); //TODO: Remove
+
+        String outputPath = "apiResponse.json";
+
         movieApi.getDataAndSaveAsJson(apiURL, outputPath);
         movies = movieApi.readMoviesFromJsonFile(outputPath);
         return movies;

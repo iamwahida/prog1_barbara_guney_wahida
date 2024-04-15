@@ -33,8 +33,10 @@
          <TextField fx:id="searchField" prefHeight="25.0" prefWidth="170.0" promptText="Search FHMDb" />
          <JFXComboBox fx:id="genreComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
          <JFXComboBox fx:id="releaseYearComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
-         <JFXComboBox fx:id="ratingComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css" />
+         <JFXComboBox fx:id="ratingComboBox" focusColor="#f5c518" styleClass="filter-combo-box" stylesheets="@styles.css"/>
          <JFXButton fx:id="popularActorBtn" styleClass="background-white" text="Most Popular Actor" />
+         <JFXButton fx:id="getLongestMovieTitleBtn" styleClass="background-white" text="Longest Title" />
+         <JFXButton fx:id="getMoviesBetweenYearsBtn" styleClass="background-white" text="Movies between years" />
          <JFXButton fx:id="moviesByDirectorBtn" styleClass="background-white" text="Movies of Director" />
          <JFXButton fx:id="searchBtn" styleClass="background-yellow" stylesheets="@styles.css" text="Filter" />
          <JFXButton fx:id="undoFilter" styleClass="background-yellow" stylesheets="@styles.css" text="Undo" />
