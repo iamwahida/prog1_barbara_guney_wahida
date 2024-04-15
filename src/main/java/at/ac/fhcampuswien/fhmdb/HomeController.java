@@ -18,13 +18,8 @@ import javafx.scene.control.TextInputDialog;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Optional;
 
 
 public class HomeController implements Initializable {
@@ -51,9 +46,6 @@ public class HomeController implements Initializable {
 
     @FXML
     public JFXButton undoFilter;
-
-    @FXML
-    private Label resultLabel;
 
     @FXML
     public JFXButton getLongestMovieTitleBtn;
@@ -132,7 +124,7 @@ public class HomeController implements Initializable {
 
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
-            if(sortBtn.getText().equals("Sort (asc)")) {
+            if (sortBtn.getText().equals("Sort (asc)")) {
                 // TODO sort observableMovies ascending
                 observableMovies.sort((movie1, movie2) -> movie1.getTitle().compareToIgnoreCase(movie2.getTitle()));
                 sortBtn.setText("Sort (desc)");
@@ -142,25 +134,28 @@ public class HomeController implements Initializable {
                 sortBtn.setText("Sort (asc)");
             }
         });
+
         popularActorBtn.setOnAction(event -> {
             String mostPopularActor = getMostPopularActor(filteredMovies);
             // Display or use the most popular actor information as needed...
             System.out.println("Most popular actor: " + mostPopularActor);
         });
 
+/*
         moviesByDirectorBtn.setOnAction(event -> {
             String director = "Christopher Nolan"; // Replace with the desired director's name
             long moviesCount = countMoviesFrom(filteredMovies, director);
             // Display or use the count of movies by the director as needed...
             System.out.println("Number of movies directed by " + director + ": " + moviesCount);
         });
+ */
 
         getLongestMovieTitleBtn.setOnAction(actionEvent -> {
             Movie longestTitleMovie = allMovies.stream()
                     .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
                     .orElse(null);
 
-            if(longestTitleMovie != null) {
+            if (longestTitleMovie != null) {
                 observableMovies.clear();
                 observableMovies.add(longestTitleMovie);
                 movieListView.setItems(observableMovies);
@@ -224,7 +219,7 @@ public class HomeController implements Initializable {
         return movies.stream()
                 .filter(movie -> {
                     try {
-                        int year = Integer.parseInt(movie.getReleaseYear().trim());
+                        int year = Math.round(Float.parseFloat(movie.getReleaseYear().trim()));
                         return year >= startYear && year <= endYear;
                     } catch (NumberFormatException e) {
                         System.out.println("Error with the year: " + movie.getReleaseYear());
@@ -233,8 +228,6 @@ public class HomeController implements Initializable {
                 })
                 .collect(Collectors.toList());
     }
-
-
 
 
     public String getMostPopularActor(List<Movie> movies) {
@@ -247,13 +240,36 @@ public class HomeController implements Initializable {
                 .orElse(null);
     }
 
-    public long countMoviesFrom(List<Movie> movies, String director) {
-        return movies.stream()
-                .filter(movie -> movie.getDirector().equalsIgnoreCase(director))
-                .count();
-    }
-
 }
+
+
+ /*
+    public static long countMoviesFrom(List<Movie> movies, String director) {
+        if (movies == null || movies.isEmpty() || director == null || director.trim().isEmpty()) {
+            return 0;
+        }
+
+
+
+
+        return movies.stream()
+                .filter(movie -> movie.getDirector() != null)
+                .map(movie -> movie.getDirector().trim())
+                .filter(d -> d.equalsIgnoreCase(director.trim()))
+                .count();
+
+        long count = 0;
+        for (Movie movie : movies) {
+            String movieDirector = movie.getDirector();
+            if (movieDirector != null && movieDirector.trim().equalsIgnoreCase(director.trim())) {
+                count++;
+            }
+        }
+        return count;
+    }
+         */
+
+
 
 
 

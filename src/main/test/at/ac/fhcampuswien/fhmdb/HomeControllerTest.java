@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HomeControllerTest {
     public List<Movie> allMovies = Movie.initializeMovies();
-
     public HomeControllerTest() throws IOException {
     }
 /*
