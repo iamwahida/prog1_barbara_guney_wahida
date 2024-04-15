@@ -36,35 +36,44 @@ Ob die Getter-Methoden die richtigen Werte zurückgeben.
         assertFalse(movies.isEmpty(), "The list is not supposed to be empty.");
 
         for (Movie movie : movies) {
-            assertNotNull(movie.getTitle(), "Titel should not be null.");
-            assertFalse(movie.getTitle().isEmpty(), "Titel should not be empty.");
+            assertNotNull(movie.getTitle(), "Title should not be null.");
+            assertFalse(movie.getTitle().isEmpty(), "Title should not be empty.");
 
             assertNotNull(movie.getDescription(), "Description is not supposed to be null.");
             assertFalse(movie.getDescription().isEmpty(), "Description should not be empty.");
 
             assertNotNull(movie.getListGenres(), "Genre List should not be null.");
             assertFalse(movie.getListGenres().isEmpty(), "Genre List should not be empty.");
+
+            assertNotNull(movie.getReleaseYear(), "Release year should not be null.");
+            assertFalse(movie.getReleaseYear().isEmpty(), "Release year should not be empty.");
+
+            assertNotNull(movie.getRating(), "Rating should not be null.");
+            assertFalse(movie.getRating().isEmpty(), "Rating should not be empty.");
         }
     }
 
+
     @Test
     void test_if_movie_object_is_correctly_instantiated(){
-        //Arrange
-        List<String> genresList = new ArrayList<>();
-        genresList.add("Drama");
-        genresList.add("Action");
-        genresList.add("Adventure");
+        // Arrange
+        String title = "Test Movie";
+        String description = "A test movie for unit testing";
+        List<String> genresList = Arrays.asList("Drama", "Action", "Adventure");
+        String year = "2008";
+        String rating = "8";
 
-        //Act
-        Movie movie = new Movie("Test", "Test", genresList, "2008", "8");
+        // Act
+        Movie movie = new Movie(title, description, genresList, year, rating);
 
-        //Assert
-        assertEquals("Java Unit Tests", movie.getTitle());
-        assertEquals("A movie about testing your programs", movie.getDescription());
-        assertTrue(movie.getListGenres().contains("Drama"));
-        assertTrue(movie.getListGenres().contains("Action"));
-        assertTrue(movie.getListGenres().contains("Adventure"));
+        // Assert
+        assertEquals(title, movie.getTitle(), "Title should match");
+        assertEquals(description, movie.getDescription(), "Description should match");
+        assertTrue(movie.getListGenres().containsAll(genresList), "Genres should match");
+        assertEquals(year, movie.getReleaseYear(), "Year should match");
+        assertEquals(rating, movie.getRating(), "Rating should match");
     }
+
 
     /*@Test
     void test_if_correct_movies_are_filtered_when_text_is_entered() throws IOException {
