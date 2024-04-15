@@ -37,7 +37,10 @@ public class Movie {
 
     public List <String> getListGenres(){ return genres; }
 
-    public String getReleaseYear(){ return releaseYear; }
+    public String getReleaseYear() {
+        return String.format("%d", (int) Float.parseFloat(this.releaseYear));
+    }
+
 
     public String getRating(){ return rating; }
     public List<String> getMainCast() {

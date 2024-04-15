@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.Optional;
+
 
 public class HomeController implements Initializable {
     @FXML
@@ -152,6 +155,33 @@ public class HomeController implements Initializable {
             String longestTitle = getLongestMovieTitle(allMovies);
             System.out.println("The longest Movie Title: " + longestTitle);
         });
+
+        getMoviesBetweenYearsBtn.setOnAction(actionEvent -> {
+            TextInputDialog dialog = new TextInputDialog("2020");
+            dialog.setTitle("Jahresbereich wählen");
+            dialog.setHeaderText("Search for movies between two years");
+            dialog.setContentText("Enter the start year:");
+
+            Optional<String> startYearResult = dialog.showAndWait();
+            startYearResult.ifPresent(startYearString -> {
+                dialog.setContentText("Enter the end year:");
+                Optional<String> endYearResult = dialog.showAndWait();
+                endYearResult.ifPresent(endYearString -> {
+                    try {
+                        int startYear = Integer.parseInt(startYearString);
+                        int endYear = Integer.parseInt(endYearString);
+
+                        List<Movie> moviesBetweenYears = getMoviesBetweenYears(allMovies, startYear, endYear);
+
+                        System.out.println("Movies between " + startYear + " and " + endYear + ":");
+                        moviesBetweenYears.forEach(movie -> System.out.println(movie.getTitle() + " (" + movie.getReleaseYear() + ")"));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error");
+                    }
+                });
+            });
+        });
+
     }
 
     public void setFilteredList() {
@@ -189,14 +219,18 @@ public class HomeController implements Initializable {
         return movies.stream()
                 .filter(movie -> {
                     try {
-                        int year = Integer.parseInt(movie.getReleaseYear());
+                        // Versuch, das Jahr als Gleitkommazahl zu parsen und dann in eine ganze Zahl umzuwandeln
+                        int year = (int) Float.parseFloat(movie.getReleaseYear().trim());
                         return year >= startYear && year <= endYear;
                     } catch (NumberFormatException e) {
+                        System.out.println("Fehler beim Parsen des Jahres: " + movie.getReleaseYear());
                         return false;
                     }
                 })
                 .collect(Collectors.toList());
     }
+
+
 
     public String getMostPopularActor(List<Movie> movies) {
         return movies.stream()
