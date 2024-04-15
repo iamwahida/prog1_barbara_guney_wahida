@@ -158,7 +158,6 @@ public class HomeController implements Initializable {
 
         getMoviesBetweenYearsBtn.setOnAction(actionEvent -> {
             TextInputDialog dialog = new TextInputDialog("2020");
-            dialog.setTitle("Jahresbereich wählen");
             dialog.setHeaderText("Search for movies between two years");
             dialog.setContentText("Enter the start year:");
 
