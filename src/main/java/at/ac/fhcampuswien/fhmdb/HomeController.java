@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 
@@ -50,6 +51,9 @@ public class HomeController implements Initializable {
 
     @FXML
     public JFXButton undoFilter;
+
+    @FXML
+    private Label resultLabel;
 
     @FXML
     public JFXButton getLongestMovieTitleBtn;
@@ -152,9 +156,17 @@ public class HomeController implements Initializable {
         });
 
         getLongestMovieTitleBtn.setOnAction(actionEvent -> {
-            String longestTitle = getLongestMovieTitle(allMovies);
-            System.out.println("The longest Movie Title: " + longestTitle);
+            Movie longestTitleMovie = allMovies.stream()
+                    .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
+                    .orElse(null);
+
+            if(longestTitleMovie != null) {
+                observableMovies.clear();
+                observableMovies.add(longestTitleMovie);
+                movieListView.setItems(observableMovies);
+            }
         });
+
 
         getMoviesBetweenYearsBtn.setOnAction(actionEvent -> {
             TextInputDialog dialog = new TextInputDialog("2020");
@@ -172,8 +184,9 @@ public class HomeController implements Initializable {
 
                         List<Movie> moviesBetweenYears = getMoviesBetweenYears(allMovies, startYear, endYear);
 
-                        System.out.println("Movies between " + startYear + " and " + endYear + ":");
-                        moviesBetweenYears.forEach(movie -> System.out.println(movie.getTitle() + " (" + movie.getReleaseYear() + ")"));
+                        observableMovies.clear();
+                        observableMovies.addAll(moviesBetweenYears);
+                        movieListView.setItems(observableMovies);
                     } catch (NumberFormatException e) {
                         System.out.println("Error");
                     }
@@ -204,13 +217,6 @@ public class HomeController implements Initializable {
         observableMovies.addAll(allMovies);
         movieListView.setItems(observableMovies);
         movieListView.setCellFactory(movieListView -> new MovieCell());
-    }
-
-    String getLongestMovieTitle(List<Movie> movies) {
-        return movies.stream()
-                .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
-                .map(Movie::getTitle)
-                .orElse("");
     }
 
 
@@ -252,6 +258,14 @@ public class HomeController implements Initializable {
 
 
 
+   /*
+    String getLongestMovieTitle(List<Movie> movies) {
+        return movies.stream()
+                .max(Comparator.comparingInt(movie -> movie.getTitle().length()))
+                .map(Movie::getTitle)
+                .orElse("");
+    }
+     */
 
 
 
